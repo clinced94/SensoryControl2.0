@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "187070651546",
+    "firebase_url": "https://sensorycontrol-77090.firebaseio.com",
+    "project_id": "sensorycontrol-77090",
+    "storage_bucket": "sensorycontrol-77090.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187070651546:android:91fed6f3291dfb3d",
+        "android_client_info": {
+          "package_name": "com.fyp.david.sensorycontrolv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187070651546-t5f69ovhlaqkreadk3q58utemk7ghmm7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fyp.david.sensorycontrolv2",
+            "certificate_hash": "0600e7db7f4954050cdb17453fbe441ca6249a96"
+          }
+        },
+        {
+          "client_id": "187070651546-8r9c9og2u4buhhm7ibut00kgjvk27j51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1nry7XegS8HGQ5WnmKQW9403lDFW03HA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187070651546-8r9c9og2u4buhhm7ibut00kgjvk27j51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

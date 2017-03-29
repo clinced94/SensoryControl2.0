@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">SensoryControlV2</string>
+
+    <string name="action_settings">Settings</string>
+    <string  name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string  name="auth_failed">Authentication error, Please enter a valid email and password or sign up</string>
+    <string  name="hint_email">Email</string>
+    <string  name="hint_password">Password</string>
+    <string  name="btn_login">LOGIN</string>
+    <string  name="btn_link_to_login">Already registered. Login !!</string>
+    <string  name="btn_sign_out">Sign Out</string>
+    <string name="btn_sign_up">Sign Up !!</string>
+    <string name="err_msg_email">Enter a valid email.</string>
+    <string name="err_msg_required">Required !!</string>
+    <string name="err_msg_password">Enter a valid password with min 6 characters.</string>
+    <string name="btn_link_to_signup">Don\'t have an account, Signup !!</string>
+    <string name="all_deleted">All Deleted !!</string>
+    <string name="are_you_sure">Want to Delete ??</string>
+    <string name="dialog_single_button">Create</string>
+    <string name="enter_listItem_text">Enter Item !!</string>
+
+    <string name="title_activity_stats">StatsActivity</string>
+    <string name="title_activity_record">RecordActivity</string>
+    <string name="title_activity_action">ActionActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="record_question">How is your focus level?</string>
+
+    <string name="wildButtonText">Wild</string>
+    <string name="wildDesc">Wild consists of moods that make you a bit, well, wild. For example, choose this if you\'re feeling angry, hyper,
+        stressed, or are struggling to concentrate.</string>
+    <string name="goodButtonText">Good</string>
+    <string name="good_desc">About right consists of good, balanced moods. For example, choose this if you\'re feeling happy,
+        calm, motivated, optimistic, or focused.</string>
+    <string name="drainedButtonText">Drained</string>
+    <string name="drained_desc">Drained consists of moods that drain your energy. For example, choose this if you\'re feeling lazy,
+        unmotivated, sleepy, pessimistic, or sad.</string>
+
+
+    <string name="hi">Hi!</string>
+    <string name="welcome_message">We hope you\'re feeling great today!</string>
+
+    <string name="about_right_progress">About Right: </string>
+    <string name="actions_used_this_week">Actions used:</string>
+    <string name="goal_progress">Goal: </string>
+    <string name="placeholder_num">0</string>
+    
+    
+    <string-array name="effect_options">
+        <item>Calming</item>
+        <item>Energising</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@color/whiterBackground"
+    android:orientation="vertical">
+    <!-- tools:context="com.fyp.david.selfregulation.HomeActivity" -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="0.25"
+        android:paddingTop="16dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/whiterBackground">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:text="@string/hi"
+            android:textAppearance="@android:style/TextAppearance.Material.Display1"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="16dp"
+            android:textAlignment="center"
+            android:textColor="@color/textMain" />
+
+        <TextView
+            android:text="@string/welcome_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:layout_weight="1"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textAlignment="center"
+            android:textColor="@color/textMain" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="0.61"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/linear_layout_border">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/weekTextView"
+                android:text="@string/about_right_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textColor="@color/textMain" />
+
+            <TextView
+                android:id="@+id/weekNumTextView"
+                android:text="@string/placeholder_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textSize="18sp"
+                android:textColor="@color/textMain" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/weekly_use_progressBar"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:progress="5"
+            android:background="@drawable/prog_bar_borders"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:theme="@style/AppTheme.progressBar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/actionTextView"
+                android:text="@string/goal_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="@color/textMain" />
+
+            <TextView
+                android:id="@+id/actionNumTextView"
+                android:text="@string/placeholder_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textSize="18sp"
+                android:textColor="@color/textMain" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_progress_bar"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:progress="5"
+            android:background="@drawable/prog_bar_borders"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:theme="@style/AppTheme.progressBar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/goalTextView"
+                android:text="@string/actions_used_this_week"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textSize="18sp"
+                android:textColor="@color/textMain"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/goalNumTextView"
+                android:text="@string/placeholder_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textSize="18sp"
+                android:textColor="@color/textMain" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/goal_progress_bar"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:progress="5"
+            android:background="@drawable/prog_bar_borders"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="16dp"
+            android:theme="@style/AppTheme.progressBar" />
+
+    </LinearLayout>
+
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_weight=".14">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarBottom"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/toolbar_button_border_home"
+            android:weightSum="5"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:layout_gravity="bottom">
+
+            <LinearLayout
+                android:id="@+id/toolbarcontainer"
+                android:layout_height="match_parent"
+                android:weightSum="5"
+                android:orientation="horizontal"
+                android:layout_width="match_parent">
+
+                <ImageButton
+                    android:id="@+id/homeButton"
+                    android:text="Home"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toolbar_button_border_home"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="normal|bold"
+                    android:src="@drawable/ic_home"
+                    android:contentDescription="Home"
+                    app:srcCompat="@drawable/ic_home" />
+
+                <ImageButton
+                    android:id="@+id/statsButton"
+                    android:text="Stats"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="normal|bold"
+                    android:textColor="@android:color/background_light"
+                    app:srcCompat="@drawable/ic_stats"
+                    android:contentDescription="statistics" />
+
+                <ImageButton
+                    android:id="@+id/recordButton"
+                    android:text="Record"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="normal|bold"
+                    android:textColor="@android:color/background_light"
+                    app:srcCompat="@drawable/ic_record"
+                    android:contentDescription="record" />
+
+                <ImageButton
+                    android:id="@+id/activityButton"
+                    android:text="Activity"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="normal|bold"
+                    android:textColor="@android:color/background_light"
+                    style="@style/Widget.AppCompat.Button"
+                    app:srcCompat="@drawable/ic_activities"
+                    android:contentDescription="activities" />
+
+                <ImageButton
+                    android:id="@+id/settingsButton"
+                    android:text="Settings"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textStyle="normal|bold"
+                    android:textColor="@android:color/background_light"
+                    style="@style/Widget.AppCompat.Button"
+                    app:srcCompat="@drawable/ic_settings"
+                    android:contentDescription="settings" />
+
+
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+    </LinearLayout>
+
+
+</LinearLayout>
+

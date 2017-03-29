@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="8"
+    android:theme="@style/Base.Animation.AppCompat.Dialog">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/activityAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_item_title"
+            android:gravity="center"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Effect:"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:id="@+id/effect_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:paddingLeft="8dp"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:id="@+id/effect_data" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Rating:"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:id="@+id/rating_title"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="8dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp">
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rating_data"
+                android:numStars="5"
+                android:stepSize="0.1"
+                android:rating="0"
+                style="@android:style/Widget.DeviceDefault.Light.RatingBar" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="About:"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:id="@+id/desc_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:paddingLeft="8dp"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:id="@+id/desc_data" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

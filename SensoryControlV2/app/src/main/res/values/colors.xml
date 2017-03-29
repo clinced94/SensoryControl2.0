@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6c0896</color>
+    <color name="colorPrimaryDark">#570978</color>
+    <color name="colorAccent">#1fb6ff</color>
+    <color name="homeTint">#321fb6ff</color>
+    <color name="statsAccent">#d40dcb</color>
+    <color name="statsTint">#32d40dcb</color>
+    <color name="recordAccent">#4caf50</color>
+    <color name="recordTint">#324caf50</color>
+    <color name="activityAccent">#ffc107</color>
+    <color name="actionTint">#32ffc107</color>
+    <color name="settingsAccent">#b0bec5</color>
+    <color name="settingsTint">#32b0bec5</color>
+    <color name="background">#eef1f3</color>
+    <color name="textMain">#455a64</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="whiterBackground">#fafafa</color>
+    <color name="white">#ffffff</color>
+
+    
+    <color name="blue">#5da5da</color>
+    <color name="orange">#f9a825</color>
+    <color name="green">#66bb6a</color>
+    <color name="pink">#ff80ab</color>
+    <color name="yellow">#ffd54f</color>
+    <color name="purple">#ba68c8</color>
+    <color name="grey">#757575</color>
+    <color name="red">#ef5350</color>
+    
+</resources>

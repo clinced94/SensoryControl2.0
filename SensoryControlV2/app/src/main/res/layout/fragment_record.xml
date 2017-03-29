@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context="com.fyp.david.sensorycontrolv2.recordFragments.RecordFragment"
+    android:id="@+id/record_frag_linear">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:text="How is your mood level?"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:id="@+id/record_text"
+        android:textAppearance="@android:style/TextAppearance.Material.Display2"
+        android:textAlignment="center"
+        android:drawableEnd="@drawable/ic_info"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:paddingEnd="16dp"
+        android:paddingStart="40dp"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="3"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin">
+
+        <Button
+            android:text="@string/wildButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/wildButton"
+            android:layout_weight="1"
+            android:backgroundTint="@color/yellow"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            tools:text="Wild"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp" />
+
+        <Button
+            android:text="@string/goodButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/goodButton"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:layout_marginRight="8dp" />
+
+        <Button
+            android:text="@string/drainedButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/drainedButton"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:layout_marginLeft="8dp" />
+    </LinearLayout>
+
+</LinearLayout>
