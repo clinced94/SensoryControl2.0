@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_root"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -12,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:background="@color/activityAccent">
+        android:background="@color/activityAccent"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,7 +23,17 @@
             android:gravity="center"
             android:textAppearance="@android:style/TextAppearance.Material.Large"
             android:paddingTop="32dp"
-            android:paddingBottom="32dp" />
+            android:paddingBottom="32dp"
+            android:layout_weight="0.95"
+            android:backgroundTint="@color/activityAccent" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_fav_outline"
+            android:id="@+id/fav_btn"
+            android:backgroundTint="@color/activityAccent" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -57,25 +69,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:weightSum="2"
         android:paddingTop="@dimen/activity_horizontal_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Rating:"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:id="@+id/rating_title"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingRight="8dp" />
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:gravity="center">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="12dp">
+            android:layout_marginRight="12dp"
+            android:gravity="center">
 
             <RatingBar
                 android:layout_width="wrap_content"
@@ -85,7 +89,16 @@
                 android:stepSize="0.1"
                 android:rating="0"
                 style="@android:style/Widget.DeviceDefault.Light.RatingBar" />
+
         </LinearLayout>
+
+        <Button
+            android:text="Rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rating_btn"
+            android:layout_weight="1"
+            android:backgroundTint="@color/activityAccent" />
 
 
     </LinearLayout>

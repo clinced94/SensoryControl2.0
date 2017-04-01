@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fyp.david.sensorycontrolv2.R;
+import com.fyp.david.sensorycontrolv2.actionFragments.ActionListItem;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -17,6 +18,11 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +38,15 @@ public class BarChartFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    DatabaseReference dab;
+    DatabaseReference actionItemRef;
+
     BarChart barChart;
     BarDataSet dataSet;
     ArrayList<BarEntry> barEntries;
     ArrayList<String> barLabels;
+
+    ArrayList<ActionListItem> actionListItems;
 
     //private OnFragmentInteractionListener mListener;
 
@@ -47,6 +58,8 @@ public class BarChartFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dab = FirebaseDatabase.getInstance().getReference();
+        actionItemRef = dab.child("action_item");
 
 
     }
@@ -54,6 +67,39 @@ public class BarChartFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        actionListItems = new ArrayList<>();
+
+        actionItemRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                ActionListItem actionListItem = dataSnapshot.getValue(ActionListItem.class);
+                if(actionListItem.getActionItemUses() >= 1) {
+                    actionListItems.add(actionListItem);
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bar_chart, container, false);
 

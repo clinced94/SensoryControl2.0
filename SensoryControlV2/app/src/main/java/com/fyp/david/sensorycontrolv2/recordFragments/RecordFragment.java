@@ -49,9 +49,11 @@ import java.util.List;
 public class RecordFragment extends Fragment{
 
     private final String TAG = "RecFragment";
+    private String itemKey = "";
 
     DatabaseReference dab;
     DatabaseReference actionItemRef;
+    DatabaseReference actionItemUsers;
 
     private ListView listView;
     private ArrayList<ActionListItem> listOfActions;
@@ -90,6 +92,7 @@ public class RecordFragment extends Fragment{
 
         dab = FirebaseDatabase.getInstance().getReference();
         actionItemRef = dab.child("action_item");
+        actionItemUsers = actionItemRef.child("users");
 
         listView = (ListView) dialogView.findViewById(R.id.choose_action_list);
 
@@ -111,15 +114,20 @@ public class RecordFragment extends Fragment{
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                 ActionListItem item = dataSnapshot.getValue(ActionListItem.class);
-                listOfActions.add(item);
 
                 if(item.getActionItemEffect().equals("Calming")) {
-                    calmActions.add(item);
-                    listofCalmingTitles.add(item.getActionItemTitle());
+
+                    if(item.getActionItemFav()) {
+                        calmActions.add(item);
+                        listofCalmingTitles.add(item.getActionItemTitle());
+                    }
                 }
                 else {
-                    energyActions.add(item);
-                    listOfEnergyTitles.add(item.getActionItemTitle());
+
+                    if(item.getActionItemFav()) {
+                        energyActions.add(item);
+                        listOfEnergyTitles.add(item.getActionItemTitle());
+                    }
                 }
 
                 listOfActionTitles.add(item.getActionItemTitle());
@@ -223,8 +231,9 @@ public class RecordFragment extends Fragment{
             }).setAdapter(nameAdapter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ActionListItem item = theAdapter.getItem(which);
+                        final ActionListItem item = theAdapter.getItem(which);
                         String name = item.getActionItemTitle();
+
 
                         AlertDialog.Builder inner = createBuilder();
                         inner.setMessage(name);
@@ -232,6 +241,11 @@ public class RecordFragment extends Fragment{
                         inner.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                float uses = item.getActionItemUses();
+                                uses ++;
+                                item.setActionItemUses(uses);
+                                int id = item.getActionItemId();
+                                actionItemRef.child("" + id).child("actionItemUses").setValue(uses);
                                 Intent intent = new Intent(RecordFragment.this.getActivity(), ResponseRecorded.class);
                                 startActivity(intent);
                             }

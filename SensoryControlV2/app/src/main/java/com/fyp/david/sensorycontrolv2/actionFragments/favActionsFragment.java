@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -32,6 +35,7 @@ import com.fyp.david.sensorycontrolv2.R;
 import com.fyp.david.sensorycontrolv2.SimpleDividerItemDecoration;
 import com.fyp.david.sensorycontrolv2.actionFragments.dummy.DummyContent;
 import com.fyp.david.sensorycontrolv2.actionFragments.dummy.DummyContent.DummyItem;
+import com.fyp.david.sensorycontrolv2.auth.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -39,6 +43,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,12 +55,16 @@ import java.util.logging.ConsoleHandler;
 public class favActionsFragment extends Fragment{
 
     private final String TAG = "FavActionsFrag";
+    String itemKey = "";
+
     DatabaseReference dab;
     DatabaseReference actionItemRef;
     DatabaseReference userActionItemRef;
     FirebaseUser firebaseUser;
     FirebaseAuth.AuthStateListener listener;
     FirebaseAuth auth;
+    String UserID;
+    public int itemId;
 
     private ListView listView;
     private ArrayList<ActionListItem> actionListItems;
@@ -94,24 +103,23 @@ public class favActionsFragment extends Fragment{
         actionItemRef = dab.child("action_item");
 
 
-        //firebaseUser = auth.getCurrentUser();
 
 
-
-
-       /* userActionItemRef = actionItemRef.child(firebaseUser.getUid());
+        itemId = 0;
+       //userActionItemRef = actionItemRef.child(firebaseUser.getUid());
         listener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 firebaseUser = firebaseAuth.getCurrentUser();
                 if(firebaseUser != null) {
-
+                    UserID = firebaseUser.getUid();
                 }
                 else {
-
+                    Intent intent = new Intent(favActionsFragment.this.getActivity(), LoginActivity.class);
+                    startActivity(intent);
                 }
             }
-        };*/
+        };
 
 
         actionItemRecycler = (RecyclerView) view.findViewById(R.id.action_item_recycler);
@@ -121,19 +129,21 @@ public class favActionsFragment extends Fragment{
         actionListItems = new ArrayList<>();
 
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        //TODO: include add funcionality for favFragment too.
+        /*FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createNewActionItem();
             }
-        });
+        });*/
 
 
         actionItemRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Log.d(TAG+"Added", dataSnapshot.getValue(ActionListItem.class).toString());
+                itemKey= dataSnapshot.getKey();
                 fetchData(dataSnapshot);
             }
 
@@ -190,7 +200,7 @@ public class favActionsFragment extends Fragment{
                         String actionItemEffect = effectSpinner.getSelectedItem().toString();
                         String actionItemDescription = descriptionInput.getText().toString();
 
-                        ActionListItem actionListItem = new ActionListItem(actionItemTitle, actionItemEffect, actionItemDescription);
+                        ActionListItem actionListItem = new ActionListItem(itemId, actionItemTitle, actionItemEffect, actionItemDescription);
 
                         Map<String, Object> actionItemValues = actionListItem.toMap();
 
@@ -247,7 +257,8 @@ public class favActionsFragment extends Fragment{
 
     private void fetchData(DataSnapshot snapshot) {
         ActionListItem actionListItem = snapshot.getValue(ActionListItem.class);
-        actionListItems.add(actionListItem);
+        if(actionListItem.getActionItemFav())
+            actionListItems.add(actionListItem);
 
         updateUI();
     }
@@ -275,27 +286,32 @@ public class favActionsFragment extends Fragment{
                 final TextView effectData = (TextView) getActionItemDataView.findViewById(R.id.effect_data);
                 final TextView descData = (TextView) getActionItemDataView.findViewById(R.id.desc_data);
                 final RatingBar ratingData = (RatingBar) getActionItemDataView.findViewById(R.id.rating_data);
+                final Button ratingButton = (Button) getActionItemDataView.findViewById(R.id.rating_btn);
 
                 final int itemPosition = actionItemRecycler.getChildLayoutPosition(v);
-                ActionListItem item = actionListItems.get(itemPosition);
+                final ActionListItem item = actionListItems.get(itemPosition);
 
 
                 String titleStr = item.getActionItemTitle();
                 title.setText(titleStr);
                 String effect = item.getActionItemEffect();
                 effectData.setText(effect);
+                ratingData.setRating(item.getActionItemRating());
 
-                ratingData.setOnClickListener(new View.OnClickListener() {
+
+                final DatabaseReference ratingRef = actionItemRef.child(""+item.actionItemId).child("actionItemRating");
+                ratingButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ratingData.setRating(ratingData.getRating());
-                        String rateStr = "" + ratingData.getRating();
+                        float rating = ratingData.getRating();
+                        item.setActionItemRating(rating);
+                        ratingRef.setValue(rating);
+                        String rateStr = "" + item.getActionItemRating();
                         Toast.makeText(getContext(),rateStr , Toast.LENGTH_SHORT).show();
                     }
                 });
-                float rating = ratingData.getRating();
-                item.setActionItemRating(rating);
-                ratingData.setRating(item.getActionItemRating());
+
+
 
 
 
@@ -336,6 +352,11 @@ public class favActionsFragment extends Fragment{
     public AlertDialog.Builder createBuilder() {
 
         return new AlertDialog.Builder(this.getActivity());
+    }
+
+    public int newItemId(int oldId) {
+
+        return oldId ++;
     }
 }
 
