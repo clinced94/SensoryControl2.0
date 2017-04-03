@@ -72,14 +72,14 @@ public class TypeBarFragment extends Fragment {
 
         typeBarLabels = new ArrayList<>();
         typeBarLabels.add("Wild");
-        typeBarLabels.add("About Right");
-        typeBarLabels.add("Low");
+        typeBarLabels.add("Good");
+        typeBarLabels.add("Drained");
 
         typeBarChart = (BarChart) getView().findViewById(R.id.typebarchart);
         BarData theData = new BarData(typeBarLabels, typeDataSet);
-        typeDataSet.setColors(new int[] {getResources().getColor(R.color.purple),
-                getResources().getColor(R.color.yellow),
-                getResources().getColor(R.color.red)});
+        typeDataSet.setColors(new int[] {getResources().getColor(R.color.yellow),
+                getResources().getColor(R.color.blue),
+                getResources().getColor(R.color.grey)});
 
         typeBarChart.setDrawValueAboveBar(true);
         typeBarChart.setTouchEnabled(true);
@@ -89,11 +89,12 @@ public class TypeBarFragment extends Fragment {
         typeBarChart.getXAxis().setDrawGridLines(false);
         typeBarChart.setDrawBorders(false);
         typeBarChart.setBorderColor(getResources().getColor(R.color.colorPrimary));
+        typeBarChart.getAxisLeft().setAxisMinValue(0);
 
-        int [] colorArray = {getResources().getColor(R.color.purple),
-                getResources().getColor(R.color.yellow),
-                getResources().getColor(R.color.red)};
-        String [] labelArray = {"Wild", "About Right", "Low"};
+        int [] colorArray = {getResources().getColor(R.color.yellow),
+                getResources().getColor(R.color.blue),
+                getResources().getColor(R.color.grey)};
+        String [] labelArray = {"Wild", "Good", "Drained"};
         Legend legend = typeBarChart.getLegend();
         legend.setCustom(colorArray, labelArray);
 

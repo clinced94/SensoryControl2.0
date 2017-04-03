@@ -205,7 +205,8 @@ public class RecordFragment extends Fragment{
 
         //createList(effect);
         builder.setTitle("Choose " + effect + " action");
-
+        //TextView chooseTitle = (TextView) getActionListView.findViewById(R.id.choose_action_title);
+        //chooseTitle.setText("Choose " + effect + " action.");
 
         final ArrayAdapter<ActionListItem> theAdapter;
         ArrayAdapter<String> nameAdapter;

@@ -7,10 +7,10 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:layout_width="match_parent"
-        android:layout_height="380dp"
         android:id="@+id/linechart"
         android:layout_margin="16dp"
-        android:background="@drawable/chart_border">
+        android:background="@drawable/chart_border"
+        android:layout_height="450dp">
     </com.github.mikephil.charting.charts.LineChart>
 
 </FrameLayout>

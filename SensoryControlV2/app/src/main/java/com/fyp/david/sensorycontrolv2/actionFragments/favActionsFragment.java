@@ -24,6 +24,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
@@ -287,6 +288,8 @@ public class favActionsFragment extends Fragment{
                 final TextView descData = (TextView) getActionItemDataView.findViewById(R.id.desc_data);
                 final RatingBar ratingData = (RatingBar) getActionItemDataView.findViewById(R.id.rating_data);
                 final Button ratingButton = (Button) getActionItemDataView.findViewById(R.id.rating_btn);
+                final ImageButton favButton = (ImageButton) getActionItemDataView.findViewById(R.id.fav_btn);
+
 
                 final int itemPosition = actionItemRecycler.getChildLayoutPosition(v);
                 final ActionListItem item = actionListItems.get(itemPosition);
@@ -297,6 +300,7 @@ public class favActionsFragment extends Fragment{
                 String effect = item.getActionItemEffect();
                 effectData.setText(effect);
                 ratingData.setRating(item.getActionItemRating());
+                favButton.setImageResource(R.drawable.ic_fav);
 
 
                 final DatabaseReference ratingRef = actionItemRef.child(""+item.actionItemId).child("actionItemRating");

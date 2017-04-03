@@ -7,9 +7,9 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:layout_width="match_parent"
-        android:layout_height="380dp"
         android:layout_margin="16dp"
         android:id="@+id/typebarchart"
-        android:background="@drawable/chart_border"></com.github.mikephil.charting.charts.BarChart>
+        android:background="@drawable/chart_border"
+        android:layout_height="450dp"></com.github.mikephil.charting.charts.BarChart>
 
 </RelativeLayout>

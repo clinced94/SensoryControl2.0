@@ -3,14 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/choose_action_title"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:textAppearance="@android:style/TextAppearance.Material.Headline"
-        android:textAlignment="center" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

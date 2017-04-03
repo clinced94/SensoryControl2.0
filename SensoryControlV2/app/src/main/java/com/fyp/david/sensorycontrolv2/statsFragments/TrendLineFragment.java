@@ -77,8 +77,8 @@ public class TrendLineFragment extends Fragment {
 
         lineLabels = new ArrayList<>();
         lineLabels.add("Wild");
-        lineLabels.add("About Right");
-        lineLabels.add("Low");
+        lineLabels.add("Good");
+        lineLabels.add("Drained");
 
         lineChart = (LineChart) getView().findViewById(R.id.linechart);
         LineData theData = new LineData(lineLabels, lineDataSet);
@@ -94,11 +94,13 @@ public class TrendLineFragment extends Fragment {
         //lineChart.getXAxis().setDrawGridLines(false);
         //lineChart.setDrawBorders(false);
         //lineChart.setBorderColor(getResources().getColor(R.color.colorPrimary));
-
+        lineChart.getAxisLeft().setDrawGridLines(false);
+        lineChart.getXAxis().setDrawGridLines(false);
+        lineChart.getAxisLeft().setAxisMinValue(0);
         int [] colorArray = {getResources().getColor(R.color.purple),
                 getResources().getColor(R.color.yellow),
                 getResources().getColor(R.color.red)};
-        String [] labelArray = {"Wild", "About Right", "Low"};
+        String [] labelArray = {"Wild", "Good", "Drained"};
         Legend legend = lineChart.getLegend();
         legend.setCustom(colorArray, labelArray);
 

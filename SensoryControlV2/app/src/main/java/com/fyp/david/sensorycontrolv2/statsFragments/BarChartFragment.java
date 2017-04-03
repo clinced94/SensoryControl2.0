@@ -13,6 +13,7 @@ import com.fyp.david.sensorycontrolv2.actionFragments.ActionListItem;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -58,8 +59,7 @@ public class BarChartFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dab = FirebaseDatabase.getInstance().getReference();
-        actionItemRef = dab.child("action_item");
+
 
 
     }
@@ -68,15 +68,45 @@ public class BarChartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        dab = FirebaseDatabase.getInstance().getReference();
+        actionItemRef = dab.child("action_item");
+
         actionListItems = new ArrayList<>();
+        barEntries = new ArrayList<>();
+        barLabels = new ArrayList<>();
+
+
+
+        /*barEntries = new ArrayList<>();
+        barLabels = new ArrayList<>();
+
+
+
+        }*/
+
+
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_bar_chart, container, false);
+
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
 
         actionItemRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 ActionListItem actionListItem = dataSnapshot.getValue(ActionListItem.class);
-                if(actionListItem.getActionItemUses() >= 1) {
-                    actionListItems.add(actionListItem);
-                }
+                //if(actionListItem.getActionItemUses() >= 1) {
+                actionListItems.add(actionListItem);
+                //barEntries.add(new BarEntry(actionListItem.getActionItemUses(), actionListItem.getActionItemId()));
+                //barLabels.add(actionListItem.getActionItemTitle());
+                //System.out.print(actionListItem.toString());
+                // }
             }
 
             @Override
@@ -100,36 +130,32 @@ public class BarChartFragment extends Fragment {
             }
         });
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bar_chart, container, false);
-
-
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        barEntries = new ArrayList<>();
         barEntries.add(new BarEntry(11f, 0));
-        barEntries.add(new BarEntry(8f, 1));
-        barEntries.add(new BarEntry(8f, 2));
+        barEntries.add(new BarEntry(7f, 1));
+        barEntries.add(new BarEntry(4f, 2));
         barEntries.add(new BarEntry(10f, 3));
-        barEntries.add(new BarEntry(5f, 4));
-        barEntries.add(new BarEntry(3f, 5));
-        barEntries.add(new BarEntry(7f, 6));
+
+        /*for(int i = 0; i < actionListItems.size(); i++) {
+            ActionListItem item = actionListItems.get(i);
+            float uses = item.getActionItemUses();
+            int id = item.getActionItemId();
+            String label = item.getActionItemTitle();
+
+            barEntries.add(new BarEntry(uses, id));
+
+            barLabels.add(label);
+            System.out.print(barLabels.get(i));
+        }*/
 
 
         dataSet = new BarDataSet(barEntries, "Popular Actions");
 
-        barLabels = new ArrayList<>();
-        barLabels.add("Music");
-        barLabels.add("Tea");
-        barLabels.add("WS");
-        barLabels.add("SB");
-        barLabels.add("Dancing");
-        barLabels.add("DoD");
-        barLabels.add("Gum");
+        //if(barEntries.isEmpty())
+            //System.out.print("No data entries");
+        barLabels.add("Walk");
+        barLabels.add("Run");
+        barLabels.add("Dance");
+        barLabels.add("Breathing");
 
         barChart = (BarChart) getView().findViewById(R.id.barchart);
         BarData theData = new BarData(barLabels, dataSet);
@@ -137,7 +163,6 @@ public class BarChartFragment extends Fragment {
         dataSet.setColors(new int[] {getResources().getColor(R.color.blue),
                 getResources().getColor(R.color.orange),
                 getResources().getColor(R.color.green),
-                getResources().getColor(R.color.pink),
                 getResources().getColor(R.color.yellow),
                 getResources().getColor(R.color.purple),
                 getResources().getColor(R.color.red)});
@@ -147,19 +172,25 @@ public class BarChartFragment extends Fragment {
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(true);
-        barChart.setDrawGridBackground(false);
-        barChart.setGridBackgroundColor(R.color.whiterBackground);
+        //barChart.setDrawGridBackground(false);
+        //barChart.setGridBackgroundColor(R.color.whiterBackground);
+        barChart.getAxisLeft().setDrawGridLines(false);
+        barChart.getXAxis().setDrawGridLines(false);
         barChart.getXAxis().setLabelsToSkip(0);
         barChart.getXAxis().setPosition(XAxis.XAxisPosition.TOP_INSIDE);
-
+        barChart.getAxisLeft().setAxisMinValue(0);
         int [] colorArray = {getResources().getColor(R.color.green),
                 getResources().getColor(R.color.pink),
                 getResources().getColor(R.color.purple)};
         String [] labelArray = {"Warm Shower", "Slow Breathing", "Drum on Desk"};
-        Legend legend = barChart.getLegend();
-        legend.setCustom(colorArray, labelArray);
+        //Legend legend = barChart.getLegend();
+        //legend.setCustom(colorArray, labelArray);
 
         barChart.setData(theData);
+        barChart.invalidate();
     }
+
+
+
 
 }

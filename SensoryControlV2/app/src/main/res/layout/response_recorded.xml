@@ -29,5 +29,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/ok_btn"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:backgroundTint="@color/recordTint" />
+        android:backgroundTint="@color/recordAccent" />
 </LinearLayout>
