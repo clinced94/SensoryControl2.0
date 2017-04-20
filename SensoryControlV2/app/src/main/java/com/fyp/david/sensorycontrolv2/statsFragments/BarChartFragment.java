@@ -42,10 +42,10 @@ public class BarChartFragment extends Fragment {
     DatabaseReference dab;
     DatabaseReference actionItemRef;
 
-    BarChart barChart;
+    BarChart barChart; // The barchart
     BarDataSet dataSet;
-    ArrayList<BarEntry> barEntries;
-    ArrayList<String> barLabels;
+    ArrayList<BarEntry> barEntries; // List containing the data for each individual data point.
+    ArrayList<String> barLabels; // List of labels to go with each data point.
 
     ArrayList<ActionListItem> actionListItems;
 
@@ -130,25 +130,25 @@ public class BarChartFragment extends Fragment {
             }
         });
 
-        barEntries.add(new BarEntry(11f, 0));
+        barEntries.add(new BarEntry(11f, 0)); // This would be the first bar, with a value/height of 11.
         barEntries.add(new BarEntry(7f, 1));
         barEntries.add(new BarEntry(4f, 2));
         barEntries.add(new BarEntry(10f, 3));
 
+        // Loop that goes through list of actions from database and creates BarEntries from them.
         /*for(int i = 0; i < actionListItems.size(); i++) {
             ActionListItem item = actionListItems.get(i);
-            float uses = item.getActionItemUses();
-            int id = item.getActionItemId();
-            String label = item.getActionItemTitle();
+            float uses = item.getActionItemUses(); // number of times user has used this action.
+            int id = item.getActionItemId(); // id of the action, will also be id of the data point.
+            String label = item.getActionItemTitle(); // name of this action
 
-            barEntries.add(new BarEntry(uses, id));
+            barEntries.add(new BarEntry(uses, id)); //bar entry created
 
-            barLabels.add(label);
-            System.out.print(barLabels.get(i));
+            barLabels.add(label); //corresponding label created
         }*/
 
-
-        dataSet = new BarDataSet(barEntries, "Popular Actions");
+        // Creating the dataset
+        dataSet = new BarDataSet(barEntries, "Most Popular Actions");
 
         //if(barEntries.isEmpty())
             //System.out.print("No data entries");
@@ -158,7 +158,7 @@ public class BarChartFragment extends Fragment {
         barLabels.add("Breathing");
 
         barChart = (BarChart) getView().findViewById(R.id.barchart);
-        BarData theData = new BarData(barLabels, dataSet);
+
 
         dataSet.setColors(new int[] {getResources().getColor(R.color.blue),
                 getResources().getColor(R.color.orange),
@@ -179,14 +179,15 @@ public class BarChartFragment extends Fragment {
         barChart.getXAxis().setLabelsToSkip(0);
         barChart.getXAxis().setPosition(XAxis.XAxisPosition.TOP_INSIDE);
         barChart.getAxisLeft().setAxisMinValue(0);
-        int [] colorArray = {getResources().getColor(R.color.green),
-                getResources().getColor(R.color.pink),
-                getResources().getColor(R.color.purple)};
-        String [] labelArray = {"Warm Shower", "Slow Breathing", "Drum on Desk"};
-        //Legend legend = barChart.getLegend();
-        //legend.setCustom(colorArray, labelArray);
 
+
+        // Creating, and setting the final dataset, which results in the chart
+        // appearing on screen.
+        BarData theData = new BarData(barLabels, dataSet);
         barChart.setData(theData);
+
+
+
         barChart.invalidate();
     }
 
